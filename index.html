@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>白沟AI匹配台 - 箱包产业智能供需撮合平台</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ===== 顶部导航栏 ===== -->
+  <header class="top-nav">
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <rect width="28" height="28" rx="8" fill="var(--brand)"/>
+          <path d="M8 14L12 18L20 10" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>白沟AI匹配台</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#" class="nav-link active">首页</a>
+        <a href="#" class="nav-link">加工交易</a>
+        <a href="#" class="nav-link">货源商贸</a>
+        <a href="#" class="nav-link">物料设备</a>
+        <a href="#" class="nav-link">电商配套</a>
+        <a href="#" class="nav-link">人力资源</a>
+        <a href="#" class="nav-link">本地服务</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn btn-ghost" id="btnLogin">登录</button>
+        <button class="btn btn-primary" id="btnPublish">✚ 免费发布信息</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== 主内容区 ===== -->
+  <main class="main-container">
+
+    <!-- ===== AI 智能助手 - 全宽英雄区 ===== -->
+    <section class="panel ai-hero-panel" id="aiHeroPanel">
+      <div class="ai-hero-inner">
+        <div class="ai-hero-left">
+          <div class="ai-hero-header">
+            <span class="ai-hero-icon">🤖</span>
+            <div>
+              <h2 class="ai-hero-title">AI 产业助手</h2>
+              <p class="ai-hero-subtitle">用大白话告诉我你的需求，我来帮你匹配</p>
+            </div>
+            <span class="ai-hero-status">● 在线</span>
+          </div>
+          <div class="ai-hero-chat" id="aiChat">
+            <div class="ai-message ai-message-bot">
+              <div class="ai-avatar">🤖</div>
+              <div class="ai-bubble">
+                <p>你好！我是白沟箱包产业AI助手。直接告诉我你想做什么：</p>
+              </div>
+            </div>
+          </div>
+          <div class="ai-hero-input-row">
+            <div class="ai-hero-quick-actions" id="aiQuickActions">
+              <button class="quick-btn" data-intent="放加工">🔨 我要放加工订单</button>
+              <button class="quick-btn" data-intent="接加工">🏭 我要接加工单</button>
+              <button class="quick-btn" data-intent="找供货商">📦 找供货商</button>
+              <button class="quick-btn" data-intent="供货物料">🧵 我要供应物料</button>
+            </div>
+            <div class="ai-hero-input-wrap">
+              <textarea class="ai-hero-input" id="aiInput" placeholder="输入你的需求，比如：我有一批2000个女包要做，15天内交货..." rows="2"></textarea>
+              <button class="btn btn-primary btn-ai-send" id="btnAiSend">
+                <span class="send-icon">→</span>
+                <span class="send-text">发送</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="ai-hero-right">
+          <div class="ai-hero-examples">
+            <div class="ai-hero-examples-title">💡 试试这样说</div>
+            <div class="ai-hero-example" data-example="我有一批2000个女包要做，15天交期">"我有一批2000个女包要做，15天交期"</div>
+            <div class="ai-hero-example" data-example="我是加工厂，有20人，专业做双肩包">"我是加工厂，有20人，专业做双肩包"</div>
+            <div class="ai-hero-example" data-example="找白沟附近的箱包五金辅料供应商">"找白沟附近的箱包五金辅料供应商"</div>
+            <div class="ai-hero-example" data-example="有没有电商摄影和代运营服务？">"有没有电商摄影和代运营服务？"</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 两栏布局 -->
+    <div class="content-wrapper">
+    <!-- 左侧：分类面板 + 筛选 + 信息流 -->
+    <section class="content-left">
+
+      <!-- 板块1：核心主营业务分类 -->
+      <div class="panel category-panel" id="categoryPanel">
+        <div class="panel-header">
+          <h2 class="panel-title">箱包产业供需分类</h2>
+          <span class="panel-badge">12 个细分入口</span>
+        </div>
+        <div class="category-grid">
+          <div class="cat-group">
+            <div class="cat-group-title">加工交易</div>
+            <div class="cat-items">
+              <button class="cat-btn" data-cat="放加工">放加工</button>
+              <button class="cat-btn" data-cat="接加工">接加工</button>
+              <button class="cat-btn" data-cat="接单">接单</button>
+            </div>
+          </div>
+          <div class="cat-group">
+            <div class="cat-group-title">货源商贸</div>
+            <div class="cat-items">
+              <button class="cat-btn" data-cat="招供货商">招供货商</button>
+              <button class="cat-btn" data-cat="我要供货">我要供货</button>
+              <button class="cat-btn" data-cat="箱包合作">箱包合作</button>
+              <button class="cat-btn" data-cat="积压品">积压品</button>
+            </div>
+          </div>
+          <div class="cat-group">
+            <div class="cat-group-title">物料设备</div>
+            <div class="cat-items">
+              <button class="cat-btn" data-cat="箱包设备">箱包设备</button>
+              <button class="cat-btn" data-cat="箱包辅料">箱包辅料</button>
+              <button class="cat-btn" data-cat="回收辅料">回收辅料</button>
+            </div>
+          </div>
+          <div class="cat-group">
+            <div class="cat-group-title">电商配套</div>
+            <div class="cat-items">
+              <button class="cat-btn" data-cat="电商服务">电商服务</button>
+              <button class="cat-btn" data-cat="免费发布">免费发布</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 板块2：人力资源 -->
+      <div class="panel service-panel">
+        <div class="panel-header">
+          <h2 class="panel-title">人力资源</h2>
+        </div>
+        <div class="service-grid">
+          <button class="service-btn" data-cat="企业招聘">🏢 企业招聘</button>
+          <button class="service-btn" data-cat="招小时工">⏱ 招小时工</button>
+          <button class="service-btn" data-cat="个人求职">👤 个人求职</button>
+          <button class="service-btn" data-cat="上门服务">🔧 上门服务</button>
+          <button class="service-btn" data-cat="教育培训">📚 教育培训</button>
+        </div>
+      </div>
+
+      <!-- 板块3：本地不动产&商业转让 -->
+      <div class="panel service-panel">
+        <div class="panel-header">
+          <h2 class="panel-title">本地不动产 & 商业转让</h2>
+        </div>
+        <div class="service-grid">
+          <button class="service-btn" data-cat="房屋租赁">🏠 房屋租赁</button>
+          <button class="service-btn" data-cat="二手房">🏘 二手房</button>
+          <button class="service-btn" data-cat="整体转让">📋 整体转让</button>
+          <button class="service-btn" data-cat="供求信息">📢 供求信息</button>
+          <button class="service-btn" data-cat="车辆信息">🚛 车辆信息</button>
+        </div>
+      </div>
+
+      <!-- 板块4：生活商务配套 -->
+      <div class="panel service-panel">
+        <div class="panel-header">
+          <h2 class="panel-title">生活商务配套</h2>
+        </div>
+        <div class="service-grid">
+          <button class="service-btn" data-cat="家政服务">🧹 家政服务</button>
+          <button class="service-btn" data-cat="商业服务">💼 商业服务</button>
+          <button class="service-btn" data-cat="企业登记">📝 企业登记</button>
+          <button class="service-btn" data-cat="找回密码">🔑 找回密码</button>
+          <button class="service-btn danger" data-cat="诈骗举报">🚨 诈骗举报</button>
+        </div>
+      </div>
+
+      <!-- 筛选条件栏 -->
+      <div class="panel filter-panel">
+        <div class="filter-bar">
+          <div class="filter-group">
+            <label class="filter-label">角色</label>
+            <select class="filter-select" id="filterRole">
+              <option value="">全部角色</option>
+              <option value="加工厂">加工厂</option>
+              <option value="采购商">采购商</option>
+              <option value="辅料供应商">辅料供应商</option>
+              <option value="电商卖家">电商卖家</option>
+              <option value="物流">物流</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">品类</label>
+            <select class="filter-select" id="filterCategory">
+              <option value="">全部品类</option>
+              <option value="女包">女包</option>
+              <option value="双肩包">双肩包</option>
+              <option value="行李箱">行李箱</option>
+              <option value="手提包">手提包</option>
+              <option value="钱包">钱包</option>
+              <option value="化妆包">化妆包</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">数量</label>
+            <select class="filter-select" id="filterQuantity">
+              <option value="">不限数量</option>
+              <option value="100以下">100件以下</option>
+              <option value="100-500">100-500件</option>
+              <option value="500-2000">500-2000件</option>
+              <option value="2000以上">2000件以上</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">交期</label>
+            <select class="filter-select" id="filterDelivery">
+              <option value="">不限交期</option>
+              <option value="7天内">7天内</option>
+              <option value="15天内">15天内</option>
+              <option value="30天内">30天内</option>
+              <option value="30天以上">30天以上</option>
+            </select>
+          </div>
+          <button class="btn btn-ghost btn-sm" id="btnClearFilter">清除筛选</button>
+        </div>
+      </div>
+
+      <!-- 信息流 -->
+      <div class="panel feed-panel" id="feedPanel">
+        <div class="panel-header">
+          <h2 class="panel-title">最新供需信息</h2>
+          <span class="panel-meta" id="feedCount">共 0 条</span>
+        </div>
+        <div class="feed-list" id="feedList">
+          <div class="feed-empty" id="feedEmpty">
+            <div class="empty-icon">📭</div>
+            <p class="empty-title">暂无匹配的供需信息</p>
+            <p class="empty-desc">试试调整筛选条件，或者点击右侧"免费发布"发布第一条信息</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 右侧：广告位 -->
+    <aside class="content-right">
+
+      <!-- 广告招商位 -->
+      <div class="panel ad-panel">
+        <div class="ad-carousel" id="adCarousel">
+          <div class="ad-slide active">
+            <div class="ad-tag">广告</div>
+            <div class="ad-text">箱包库存积压品收售</div>
+            <div class="ad-desc">处理工厂滞销包包尾货，高价回收</div>
+          </div>
+          <div class="ad-slide">
+            <div class="ad-tag">广告</div>
+            <div class="ad-text">箱包五金配件厂家直销</div>
+            <div class="ad-desc">女包五金夹子、拉链等原材料供货</div>
+          </div>
+          <div class="ad-slide">
+            <div class="ad-tag">广告</div>
+            <div class="ad-text">常年招募女包代加工厂</div>
+            <div class="ad-desc">外贸、电商订单外放，寻找合作代工</div>
+          </div>
+        </div>
+        <div class="ad-dots">
+          <span class="ad-dot active" data-ad="0"></span>
+          <span class="ad-dot" data-ad="1"></span>
+          <span class="ad-dot" data-ad="2"></span>
+        </div>
+      </div>
+
+    </aside>
+    </div><!-- /content-wrapper -->
+  </main>
+
+  <!-- ===== AI发布向导弹窗 ===== -->
+  <div class="modal-overlay" id="publishModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3>AI 智能发布向导</h3>
+        <button class="btn-close" id="btnCloseModal">&times;</button>
+      </div>
+      <div class="modal-body" id="publishWizard">
+        <!-- 步骤1：选择角色 -->
+        <div class="wizard-step active" data-step="1">
+          <div class="wizard-question">你是哪一方？</div>
+          <div class="wizard-options">
+            <button class="wizard-option" data-role="加工厂">🏭 加工厂<br><small>承接代工订单</small></button>
+            <button class="wizard-option" data-role="采购商">🛒 采购商<br><small>寻找加工厂/供货商</small></button>
+            <button class="wizard-option" data-role="辅料供应商">🧵 辅料供应商<br><small>供应五金/面料/拉链等</small></button>
+            <button class="wizard-option" data-role="电商卖家">📱 电商卖家<br><small>寻找货源/代运营</small></button>
+          </div>
+        </div>
+        <!-- 步骤2：选择品类 -->
+        <div class="wizard-step" data-step="2">
+          <div class="wizard-question">做什么类型的包？</div>
+          <div class="wizard-options">
+            <button class="wizard-option" data-cat="女包">👜 女包</button>
+            <button class="wizard-option" data-cat="双肩包">🎒 双肩包</button>
+            <button class="wizard-option" data-cat="行李箱">🧳 行李箱</button>
+            <button class="wizard-option" data-cat="手提包">🛍 手提包</button>
+            <button class="wizard-option" data-cat="钱包">👛 钱包</button>
+            <button class="wizard-option" data-cat="化妆包">💄 化妆包</button>
+          </div>
+        </div>
+        <!-- 步骤3：填写详情 -->
+        <div class="wizard-step" data-step="3">
+          <div class="wizard-question">补充关键信息</div>
+          <div class="wizard-form">
+            <div class="form-row">
+              <label>数量</label>
+              <input type="text" class="wizard-input" id="wizQuantity" placeholder="例：2000件">
+            </div>
+            <div class="form-row">
+              <label>交期</label>
+              <input type="text" class="wizard-input" id="wizDelivery" placeholder="例：15天内">
+            </div>
+            <div class="form-row">
+              <label>价格/预算</label>
+              <input type="text" class="wizard-input" id="wizPrice" placeholder="例：25元/件">
+            </div>
+            <div class="form-row">
+              <label>补充说明</label>
+              <textarea class="wizard-textarea" id="wizNote" rows="3" placeholder="其他需要说明的信息..."></textarea>
+            </div>
+          </div>
+        </div>
+        <!-- 步骤4：预览 & 发布 -->
+        <div class="wizard-step" data-step="4">
+          <div class="wizard-question">确认发布信息</div>
+          <div class="wizard-preview" id="wizPreview">
+            <!-- 动态填充预览 -->
+          </div>
+          <div class="wizard-translate" id="wizTranslate">
+            <!-- AI翻译卡 -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" id="btnWizPrev" style="display:none">上一步</button>
+        <span class="wizard-steps" id="wizSteps">步骤 1/4</span>
+        <button class="btn btn-primary" id="btnWizNext">下一步</button>
+        <button class="btn btn-primary" id="btnWizPublish" style="display:none">确认发布</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 匹配结果弹窗 ===== -->
+  <div class="modal-overlay" id="matchModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3>🔗 AI 智能匹配结果</h3>
+        <button class="btn-close" id="btnCloseMatch">&times;</button>
+      </div>
+      <div class="modal-body" id="matchBody">
+        <!-- 动态填充匹配结果 -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" id="btnCloseMatch2">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 底部导航栏（移动端） ===== -->
+  <footer class="mobile-bottom-nav">
+    <a href="#" class="bottom-nav-item active">🏠 首页</a>
+    <a href="#" class="bottom-nav-item">📂 分类</a>
+    <a href="#" class="bottom-nav-item bottom-nav-publish">✚ 发布</a>
+    <a href="#" class="bottom-nav-item">📥 下载APP</a>
+    <a href="#" class="bottom-nav-item">👤 登录</a>
+  </footer>
+
+  <!-- ===== Toast 提示 ===== -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="rules.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
